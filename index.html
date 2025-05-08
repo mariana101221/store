@@ -3,19 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Commercial Vehicles - 15,000+ Vehicles Available</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Commercial Vehicles</title>
     <style>
         * {
-            box-sizing: border-box;
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
         }
         
         body {
-            font-family: 'Arial', sans-serif;
-            color: #333;
             background-color: #f5f5f5;
+            color: #333;
             line-height: 1.6;
         }
         
@@ -27,26 +26,46 @@
         .top-bar {
             background-color: #222;
             color: white;
-            padding: 8px 0;
+            padding: 8px 5%;
             font-size: 12px;
             display: flex;
+            flex-wrap: wrap;
             justify-content: space-between;
-            padding: 8px 5%;
+        }
+        
+        .top-bar span {
+            margin: 3px 0;
         }
         
         nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: black;
+            background-color: #000;
             color: white;
             padding: 15px 5%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
             position: relative;
         }
         
+        nav::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 150px;
+            background: url('https://st2.depositphotos.com/1203257/7557/i/450/depositphotos_75573945-stock-photo-dealer-vehicles-in-stock.jpg') center/cover;
+            opacity: 0.1;
+            z-index: 0;
+        }
+        
         .logo {
-            font-size: 28px;
+            font-size: 24px;
             font-weight: bold;
+            position: relative;
+            z-index: 1;
+            margin-bottom: 10px;
         }
         
         .logo span {
@@ -54,103 +73,96 @@
         }
         
         nav ul {
-            list-style: none;
             display: flex;
-            gap: 25px;
-        }
-        
-        nav ul li a {
-            color: white;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-        
-        nav ul li a:hover {
-            color: #f2c94c;
+            list-style: none;
+            gap: 15px;
+            position: relative;
+            z-index: 1;
+            flex-wrap: wrap;
+            margin: 10px 0;
         }
         
         .btn-add {
-            background: #f2c94c;
-            color: black;
+            background-color: #f2c94c;
+            color: #000;
             border: none;
-            padding: 10px 20px;
+            padding: 8px 15px;
             font-weight: bold;
-            border-radius: 4px;
             cursor: pointer;
-            transition: background 0.3s;
-        }
-        
-        .btn-add:hover {
-            background: #e6b800;
+            position: relative;
+            z-index: 1;
+            margin: 10px 0;
         }
         
         .hero {
-            background-color: black;
+            background-color: #000;
             color: white;
             text-align: center;
             padding: 60px 20px 40px;
-            margin: 0 10%;
+            margin: 0 5%;
             position: relative;
-            top: -30px;
-            border-radius: 8px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            top: -20px;
+            z-index: 2;
+            border-radius: 5px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.5);
         }
         
         .hero h1 {
-            font-size: 42px;
+            font-size: 28px;
             margin-bottom: 20px;
+            line-height: 1.3;
         }
         
         .search-bar {
             display: flex;
+            flex-wrap: wrap;
             justify-content: center;
             gap: 10px;
             margin-top: 20px;
-            flex-wrap: wrap;
         }
         
         .search-bar select {
-            padding: 12px 15px;
+            padding: 10px;
             border-radius: 4px;
             border: none;
-            min-width: 180px;
+            min-width: 150px;
+            flex-grow: 1;
         }
         
         .btn-search {
-            background: #f2c94c;
-            color: black;
+            background-color: #f2c94c;
+            color: #000;
             border: none;
-            padding: 12px 25px;
+            padding: 10px 20px;
             font-weight: bold;
-            border-radius: 4px;
             cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 8px;
+            flex-grow: 1;
         }
         
         .vehicle-list {
-            padding: 40px 5%;
+            padding: 30px 5%;
+            max-width: 1200px;
+            margin: 0 auto;
         }
         
         .vehicle-list h2 {
             text-align: center;
-            margin-bottom: 30px;
-            font-size: 28px;
+            margin-bottom: 20px;
+            font-size: 24px;
         }
         
         .cars {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 25px;
-            margin-bottom: 30px;
+            gap: 20px;
+            margin-bottom: 20px;
         }
         
         .car-item {
-            background: white;
-            border-radius: 8px;
+            background-color: white;
+            border-radius: 5px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
             transition: transform 0.3s;
         }
         
@@ -160,19 +172,13 @@
         
         .car-image {
             position: relative;
-            height: 180px;
-            overflow: hidden;
+            height: 160px;
         }
         
         .car-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.5s;
-        }
-        
-        .car-item:hover .car-image img {
-            transform: scale(1.05);
         }
         
         .image-icons {
@@ -180,14 +186,14 @@
             top: 10px;
             left: 10px;
             display: flex;
-            gap: 8px;
+            gap: 5px;
         }
         
         .icon {
-            background: rgba(0,0,0,0.6);
+            background-color: rgba(0,0,0,0.5);
             color: white;
-            padding: 5px 10px;
-            border-radius: 4px;
+            padding: 3px 8px;
+            border-radius: 3px;
             font-size: 12px;
         }
         
@@ -198,7 +204,6 @@
         .car-name {
             font-weight: bold;
             margin-bottom: 10px;
-            font-size: 16px;
         }
         
         .car-price {
@@ -209,82 +214,91 @@
         
         .btn-show-all {
             display: block;
-            margin: 30px auto 0;
-            background: #f2c94c;
-            color: black;
+            margin: 20px auto 0;
+            background-color: #f2c94c;
+            color: #000;
             border: none;
-            padding: 12px 30px;
+            padding: 10px 25px;
             font-weight: bold;
-            border-radius: 4px;
             cursor: pointer;
-            transition: background 0.3s;
-        }
-        
-        .btn-show-all:hover {
-            background: #e6b800;
+            border-radius: 4px;
         }
         
         .stats {
-            background-color: black;
+            background-color: #000;
             color: white;
-            padding: 80px 5%;
+            padding: 40px 5%;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 40px;
-            text-align: center;
+            gap: 30px;
+            position: relative;
+        }
+        
+        .stats::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://s7d1.scene7.com/is/image/scom/24_WRX_hero_gallery_2?$1100j$') center/cover;
+            opacity: 0.15;
+            z-index: 0;
         }
         
         .stat {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            padding: 15px;
         }
         
         .stat img {
-            width: 60px;
-            height: 60px;
-            margin-bottom: 15px;
+            width: 50px;
+            height: 50px;
+            margin-bottom: 10px;
         }
         
         .stat strong {
-            font-size: 28px;
-            display: block;
-            margin-bottom: 5px;
+            font-size: 24px;
             color: #f2c94c;
+            display: block;
         }
         
         .news-title {
             text-align: center;
-            margin: 50px 0 30px;
-            font-size: 28px;
+            margin: 40px 0 20px;
+            font-size: 24px;
         }
         
         .news-reviews {
-            padding: 0 5% 50px;
+            padding: 0 5% 40px;
+            max-width: 1200px;
+            margin: 0 auto;
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 25px;
+            gap: 20px;
         }
         
         .card {
-            background: white;
-            border-radius: 8px;
+            background-color: white;
+            border-radius: 5px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
         }
         
         .card img {
             width: 100%;
-            height: 200px;
+            height: 180px;
             object-fit: cover;
         }
         
         .card-content {
-            padding: 20px;
+            padding: 15px;
         }
         
         .card h3 {
-            font-size: 18px;
+            font-size: 16px;
             margin-bottom: 10px;
         }
         
@@ -292,93 +306,128 @@
             display: flex;
             justify-content: space-between;
             color: #777;
-            font-size: 14px;
+            font-size: 12px;
         }
         
         .site-footer {
             background-color: #111;
             color: #aaa;
-            padding: 50px 5% 30px;
+            padding: 30px 5% 20px;
         }
         
         .footer-top {
             display: flex;
+            flex-wrap: wrap;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
-            gap: 20px;
-            margin-bottom: 30px;
-            padding-bottom: 30px;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
             border-bottom: 1px solid #333;
+            gap: 15px;
         }
         
         .footer-top input {
-            padding: 12px 15px;
-            border-radius: 4px;
+            padding: 8px 12px;
+            border-radius: 3px;
             border: none;
-            min-width: 250px;
+            min-width: 200px;
+            flex-grow: 1;
         }
         
         .footer-links {
             display: flex;
-            gap: 20px;
             flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
         }
         
         .footer-links a {
             color: #aaa;
-            transition: color 0.3s;
-        }
-        
-        .footer-links a:hover {
-            color: #f2c94c;
+            text-decoration: none;
+            font-size: 12px;
+            white-space: nowrap;
         }
         
         .footer-bottom {
             display: flex;
+            flex-wrap: wrap;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-        
-        .footer-bottom p {
-            font-size: 14px;
+            font-size: 12px;
+            gap: 15px;
         }
         
         .social-icons {
             display: flex;
-            gap: 15px;
+            gap: 10px;
         }
         
         .social-icons a {
             color: #aaa;
-            font-size: 18px;
-            transition: color 0.3s;
-        }
-        
-        .social-icons a:hover {
-            color: #f2c94c;
+            font-size: 16px;
         }
         
         @media (max-width: 768px) {
-            nav {
-                flex-direction: column;
-                gap: 20px;
-            }
-            
             .hero {
-                margin: 0 5%;
+                margin: 0 3%;
                 padding: 40px 15px;
+                top: -10px;
             }
             
             .hero h1 {
-                font-size: 32px;
+                font-size: 24px;
             }
             
-            .search-bar {
+            .search-bar select, .btn-search {
+                min-width: 100%;
+            }
+            
+            .stats {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            nav ul {
+                justify-content: center;
+            }
+            
+            .logo, nav ul, .btn-add {
+                width: 100%;
+                justify-content: center;
+                text-align: center;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .top-bar {
                 flex-direction: column;
-                align-items: stretch;
+                align-items: center;
+                gap: 5px;
+            }
+            
+            .hero {
+                margin: 0 2%;
+                padding: 30px 10px;
+            }
+            
+            .stats {
+                grid-template-columns: 1fr;
+            }
+            
+            .cars {
+                grid-template-columns: 1fr;
+            }
+            
+            .news-reviews {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .social-icons {
+                justify-content: center;
             }
         }
     </style>
@@ -403,7 +452,7 @@
     </header>
 
     <section class="hero">
-        <h1>15,000+ <br>Vehicles Available</h1>
+        <h1>15,000+<br>Vehicles Available</h1>
         <div class="search-bar">
             <select>
                 <option>Choose Make</option>
@@ -420,7 +469,7 @@
                 <option>$30,000</option>
                 <option>$50,000</option>
             </select>
-            <button class="btn-search"><i class="fas fa-search"></i> 30 Cars</button>
+            <button class="btn-search">🔍 30 Cars</button>
         </div>
     </section>
 
@@ -489,23 +538,23 @@
     <section class="stats">
         <div class="stat">
             <img src="https://img.icons8.com/external-goofy-line-kerismaker/96/FFFFFF/external-Car-Loan-banking-goofy-line-kerismaker.png" alt="Cars for Sale">
-            <p><strong>15,500+</strong>Cars for Sale</p>
+            <p><strong>15,500+</strong><br>Cars for Sale</p>
         </div>
         <div class="stat">
             <img src="https://img.icons8.com/ios-filled/64/ffffff/teamwork.png" alt="Visitors">
-            <p><strong>1,750+</strong>Visitors Per Day</p>
+            <p><strong>1,750+</strong><br>Visitors Per Day</p>
         </div>
         <div class="stat">
             <img src="https://img.icons8.com/ios-filled/64/ffffff/communication.png" alt="Reviews">
-            <p><strong>3,500+</strong>Dealer Reviews</p>
+            <p><strong>3,500+</strong><br>Dealer Reviews</p>
         </div>
         <div class="stat">
             <img src="https://img.icons8.com/ios-filled/64/ffffff/verified-account.png" alt="Verified Dealers">
-            <p><strong>250+</strong>Verified Dealers</p>
+            <p><strong>250+</strong><br>Verified Dealers</p>
         </div>
     </section>
 
-    <h2 class="news-title">News & Reviews</h2>
+    <h2 class="news-title">NEWS & REVIEWS</h2>
 
     <section class="news-reviews">
         <div class="card">
@@ -557,10 +606,10 @@
         <div class="footer-bottom">
             <p>© 2015 Commercial Vehicles | Trademarks and brands are the property of their respective owners.</p>
             <div class="social-icons">
-                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-youtube"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#">FB</a>
+                <a href="#">TW</a>
+                <a href="#">YT</a>
+                <a href="#">IG</a>
             </div>
         </div>
     </footer>
